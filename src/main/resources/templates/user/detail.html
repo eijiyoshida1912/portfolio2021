@@ -2,42 +2,38 @@
 <html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
   layout:decorate="~{layout/layout}">
 <head>
-<title>ユーザー詳細</title>
+<title>作品詳細</title>
 <link rel="stylesheet" th:href="@{/css/user/list.css}">
 </head>
 <body>
   <div layout:fragment="content">
     <div class="header border-bottom">
-      <h1 class="h2">ユーザー詳細</h1>
+      <h1 class="h2">作品詳細</h1>
     </div>
     <form id="user-detail-form" method="post" th:action="@{/user/detail}" class="form-signup"
       th:object="${userDetailForm}">
-      <input type="hidden" th:field="*{userId}" />
+      <input type="hidden" th:field="*{workId}" />
       <table class="table table-striped table-bordered table-hover">
         <tbody>
           <tr>
-            <th class="w-25">ユーザーID</th>
-            <td th:next="*{userId}"></td>
+            <th class="w-25">作品ID</th>
+            <td th:text="*{workId}"></td>
           </tr>
           <tr>
-            <th>パスワード</th>
-            <td><input type="text" class="form-control" th:field="*{password}" /></td>
+            <th>画像URL</th>
+            <td th:text="*{imageUrl}"></td>
           </tr>
           <tr>
-            <th>ユーザー名</th>
-            <td><input type="text" class="form-control" th:field="*{userName}" /></td>
+            <th>完成日</th>
+            <td th:text="*{#dates.format(workDate, 'YYYY/MM/dd')}"></td>
           </tr>
           <tr>
-            <th>誕生日</th>
-            <td th:text="*{#dates.format(birthday, 'YYYY/MM/dd')}"></td>
+            <th>題名</th>
+            <td th:text="*{title}"></td>
           </tr>
           <tr>
-            <th>年齢</th>
-            <td th:text="*{age}"></td>
-          </tr>
-          <tr>
-            <th>性別</th>
-            <td th:text="*{gender==1 ? '男性' : '女性'}"></td>
+            <th>コメント</th>
+            <td th:text="*{comment}"></td>
           </tr>
         </tbody>
       </table>

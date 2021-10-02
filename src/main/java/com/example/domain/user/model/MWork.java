@@ -1,11 +1,11 @@
-package com.example.form;
+package com.example.domain.user.model;
 
 import java.util.Date;
 
 import lombok.Data;
 
 @Data
-public class UserDetailForm {
+public class MWork {
   private String workId;
   private String imageUrl;
   private Date workDate;

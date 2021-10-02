@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<!-- Mapperとxmlのマッピング -->
+<mapper namespace="com.example.repository.WorkMapper">
+
+  <!-- マッピング定義(ユーザー) -->
+  <resultMap type="com.example.domain.user.model.MWork"
+    id="work">
+    <id column="work_id" property="workId" />
+    <result column="image_url" property="imageUrl" />
+    <result column="work_date" property="workDate" />
+    <result column="title" property="title" />
+    <result column="comment" property="comment" />
+  </resultMap>
+
+  <!-- ユーザー複数件取得 -->
+  <select id="findMany" resultType="MWork">
+    select * from m_work
+    <where>
+      <if test="workId != null">work_id like '%' || #{workId} || '%'</if>
+      <if test="title != null">and title like '%' || #{title} || '%'</if>
+    </where>
+  </select>
+
+  <!-- ユーザー1件検索 -->
+  <select id="findOne" resultMap="work">
+    select
+    m_work.work_id
+    , m_work.image_url
+    , m_work.work_date
+    , m_work.title
+    , m_work.comment
+    from m_work
+    where m_work.work_id = #{workId}
+  </select>
+</mapper>
