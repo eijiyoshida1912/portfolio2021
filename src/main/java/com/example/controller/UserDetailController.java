@@ -13,7 +13,7 @@ import com.example.form.UserDetailForm;
 import com.example.service.WorkService;
 
 @Controller
-@RequestMapping("/user")
+@RequestMapping("/")
 public class UserDetailController {
   
   @Autowired
@@ -32,6 +32,6 @@ public class UserDetailController {
     // Modelに登録
     model.addAttribute("userDetailForm", form);
     // ユーザー詳細画面を表示
-    return "user/detail";
+    return "detail";
   }
 }

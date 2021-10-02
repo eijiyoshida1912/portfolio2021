@@ -15,7 +15,7 @@ import com.example.form.UserListForm;
 import com.example.service.WorkService;
 
 @Controller
-@RequestMapping("/user")
+@RequestMapping("/")
 public class UserListController {
   @Autowired
   private WorkService workService;
@@ -23,7 +23,7 @@ public class UserListController {
   @Autowired
   private ModelMapper modelMapper;
   
-  // ユーザー一覧画面を表示
+  // 作品一覧画面を表示
   @GetMapping("/list")
   public String getWorkList(@ModelAttribute UserListForm form, Model model) {
     // formをMUserクラスに変換
@@ -32,7 +32,7 @@ public class UserListController {
     List<MWork> workList = workService.getWorks(work);
     // Modelに登録
     model.addAttribute("workList", workList);
-    // ユーザー一覧画面を表示
-    return "user/list";
+    // 作品一覧画面を表示
+    return "list";
   }
 }

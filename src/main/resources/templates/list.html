@@ -8,13 +8,13 @@
 <body>
   <div layout:fragment="content">
     <div class="header border-bottom">
-      <h1 class="h2">作品一覧画面</h1>
+      <h1 class="h2">作品一覧</h1>
     </div>
     <!-- 一覧表示 -->
     <div class="container">
       <div class="row">
         <div th:each="item: ${workList}" class="col-md-3">
-          <a th:href="@{'/user/detail/' + ${item.workId}}"> <img th:src="*{item.imageUrl}" style="width: 100%;" />
+          <a th:href="@{'/detail/' + ${item.workId}}"> <img th:src="*{item.imageUrl}" style="width: 100%;" />
           </a>
         </div>
       </div>
