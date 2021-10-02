@@ -11,29 +11,13 @@
       <h1 class="h2">作品一覧画面</h1>
     </div>
     <!-- 一覧表示 -->
-    <div>
-      <table class="table table-striped table-bordered table-hover">
-        <thead class="thead-light">
-          <tr>
-            <th class="th-width">作品ID</th>
-            <th class="th-width">画像url</th>
-            <th class="th-width">完成日</th>
-            <th class="th-width">題名</th>
-            <th class="th-width">コメント</th>
-            <th></th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr th:each="item: ${workList}">
-            <td th:text="${item.workId}"></td>
-            <td th:text="${item.imageUrl}"></td>
-            <td th:text="${#dates.format(item.workDate, 'YYYY/MM/dd')}"></td>
-            <td th:text="${item.title}"></td>
-            <td th:text="${item.comment}"></td>
-            <td><a class="btn btn-primary" th:href="@{'/user/detail/' + ${item.workId}}">詳細</a></td>
-          </tr>
-        </tbody>
-      </table>
+    <div class="container">
+      <div class="row">
+        <div th:each="item: ${workList}" class="col-md-3">
+          <a th:href="@{'/user/detail/' + ${item.workId}}"> <img th:src="*{item.imageUrl}" style="width: 100%;" />
+          </a>
+        </div>
+      </div>
     </div>
   </div>
 </body>

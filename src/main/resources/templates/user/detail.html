@@ -3,7 +3,7 @@
   layout:decorate="~{layout/layout}">
 <head>
 <title>作品詳細</title>
-<link rel="stylesheet" th:href="@{/css/user/list.css}">
+<link rel="stylesheet" th:href="@{/css/user/detail.css}">
 </head>
 <body>
   <div layout:fragment="content">
@@ -12,31 +12,18 @@
     </div>
     <form id="user-detail-form" method="post" th:action="@{/user/detail}" class="form-signup"
       th:object="${userDetailForm}">
-      <input type="hidden" th:field="*{workId}" />
-      <table class="table table-striped table-bordered table-hover">
-        <tbody>
-          <tr>
-            <th class="w-25">作品ID</th>
-            <td th:text="*{workId}"></td>
-          </tr>
-          <tr>
-            <th>画像URL</th>
-            <td th:text="*{imageUrl}"></td>
-          </tr>
-          <tr>
-            <th>完成日</th>
-            <td th:text="*{#dates.format(workDate, 'YYYY/MM/dd')}"></td>
-          </tr>
-          <tr>
-            <th>題名</th>
-            <td th:text="*{title}"></td>
-          </tr>
-          <tr>
-            <th>コメント</th>
-            <td th:text="*{comment}"></td>
-          </tr>
-        </tbody>
-      </table>
+      <div class="container">
+        <div class="row">
+          <div class="col-md-6">
+            <img th:src="*{imageUrl}" style="width: 100%;" />
+          </div>
+          <div class="col-md-6">
+            <p th:text="*{#dates.format(workDate, 'YYYY/MM/dd')}"></p>
+            <h2 th:text="*{title}"></h2>
+            <p th:text="*{comment}"></p>
+          </div>
+        </div>
+      </div>
     </form>
   </div>
 </body>
